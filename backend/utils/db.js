@@ -1,11 +1,23 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
-const connectDB = async () => {
+
+
+const connectDB = async (DATABASE_URL) => {
+    console.log(DATABASE_URL)
+
     try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('mongodb connected successfully');
+        const options = {
+            dbName: "JobPortal"
+        }
+
+        await mongoose.connect(DATABASE_URL, options)
+        console.log("Data base connected successfully")
+
     } catch (error) {
-        console.log(error);
+        console.log(error)
+
     }
 }
-export default connectDB;
+
+
+export default connectDB
