@@ -144,7 +144,7 @@ const login = async (req, res) => {
 }
 
 
-const logout = async (re, res) => {
+const logout = async (req, res) => {
     try {
 
         res.clearCookie('token', {
@@ -166,4 +166,68 @@ const logout = async (re, res) => {
 
 
 
-export { register, login, logout }
+const updateProfile = async (req, res) => {
+
+    try {
+
+        const { fullName, email, phoneNumber, bio, skills } = req.body
+
+        // convert the skill into string format into array
+        let skillsArray;
+        if (skills) {
+            skillsArray = skills.split(",")
+        }
+
+        // check user is Authenticated or not using middleware
+
+        const userId = req.id
+
+        let user = await userModel.findById(userId)
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+
+        // update user
+
+        if (fullName) user.fullName = fullName
+        if (email) user.email = email
+        if (phoneNumber) user.phoneNumber = phoneNumber
+        if (bio) user.profile.bio = bio
+        if (skills) user.profile.skills = skills
+
+        // save updated user
+        await user.save()
+
+        user = {
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            role: user.role,
+            profile: user.profile
+        }
+
+
+
+        return res.status(200).json({
+            success: false,
+            user,
+            message: "User profile updated successfully..."
+        })
+
+
+    } catch (error) {
+        console.log(error)
+
+
+    }
+
+}
+
+
+
+export { register, login, logout, updateProfile }

@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 import connectDB from './utils/db.js'
 import userRoute from './routes/userRoute.js'
+import cookieParser from 'cookie-parser'
 
 // configure dot env
 dotenv.config()
@@ -25,6 +26,7 @@ connectDB(DATABASE_URL)
 // middle ware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 
 
