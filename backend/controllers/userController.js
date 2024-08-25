@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"
 const register = async (req, res) => {
     try {
 
-        const { fullName, email, phoneNumber, password, role, profile } = req.body
+        const { fullName, email, phoneNumber, password, role } = req.body
 
         if (!fullName || !email || !phoneNumber || !password || !role) {
             return res.status(400).json({
@@ -27,7 +27,7 @@ const register = async (req, res) => {
         const salt = 10
         const hashedPassword = await bcrypt.hash(password, salt)
 
-        console.log(hashedPassword)
+        // console.log(hashedPassword)
 
 
         //  create the user

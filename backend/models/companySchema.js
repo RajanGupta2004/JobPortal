@@ -7,7 +7,7 @@ const companySchema = new mongoose.Schema({
     description: { type: String },
     website: { type: String },
     location: { type: String },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "userModel", required: true }
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "user", required: true }
 
 }, { timestamps: true })
 

@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 
 
 const connectDB = async (DATABASE_URL) => {
-    console.log(DATABASE_URL)
+    // console.log(DATABASE_URL)
 
     try {
         const options = {
@@ -11,7 +11,7 @@ const connectDB = async (DATABASE_URL) => {
         }
 
         await mongoose.connect(DATABASE_URL, options)
-        console.log("Data base connected successfully")
+        console.log("Database connected successfully")
 
     } catch (error) {
         console.log(error)

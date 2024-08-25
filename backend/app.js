@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import cors from "cors"
 import connectDB from './utils/db.js'
 import userRoute from './routes/userRoute.js'
+import companyRoute from './routes/companyRoute.js'
+import jobRoutes from './routes/jobRoute.js'
 import cookieParser from 'cookie-parser'
 
 // configure dot env
@@ -33,6 +35,8 @@ app.use(cookieParser())
 // all apis
 
 app.use("/api/v1/user", userRoute)
+app.use("/api/v1/company", companyRoute)
+app.use("/api/v1/job", jobRoutes)
 
 
 
