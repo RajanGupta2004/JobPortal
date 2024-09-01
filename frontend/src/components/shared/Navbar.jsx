@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/popover"
 import { LogOut, UserRound } from 'lucide-react'
 import { Button } from '../ui/button'
+import { Link } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between mx-auto px-4 md:px-20  h-14 max-w-8xl'>
             <div>
 
-                <h1 className='text-2xl font-bold'>Job <span className='text-red-700'>Portal</span></h1>
+                <h1 className='text-2xl font-bold cursor-pointer'>Job <span className='text-red-700' >Portal</span></h1>
             </div>
             <div className='flex items-center gap-10'>
 
@@ -29,8 +30,12 @@ const Navbar = () => {
                 {
                     !user ? (
                         <div className='flex items-center gap-2'>
-                            <Button variant="outline">Login</Button>
-                            <Button className='bg-purple-700 hover:bg-purple-800' >Signup</Button>
+                            <Link to="/login">
+                                <Button variant="outline">Login</Button>
+                            </Link>
+                            <Link to="/sign-up">
+                                <Button className='bg-purple-700 hover:bg-purple-800' >Signup</Button>
+                            </Link>
                         </div>
 
                     ) : (

@@ -1,13 +1,34 @@
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import { Button } from "@/components/ui/button"
 import Navbar from './components/shared/Navbar'
+import Home from './components/Home'
+import Login from './components/auth/Login'
+import SignUp from './components/auth/SignUp'
+import { Toaster } from "@/components/ui/sonner"
 
 function App() {
 
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+
+    },
+    {
+      path: "login",
+      element: <Login />
+    },
+    {
+      path: "sign-up",
+      element: <SignUp />
+    }
+  ])
+
   return (
     <>
-      <Navbar />
+      <RouterProvider router={appRouter} />
+      <Toaster />
 
 
     </>

@@ -8,7 +8,12 @@ const register = async (req, res) => {
 
         const { fullName, email, phoneNumber, password, role } = req.body
 
-        if (!fullName || !email || !phoneNumber || !password || !role) {
+        console.log(fullName, email, phoneNumber, password, role)
+        // convert phone number data string into numver
+
+        const phoneNumberData = Number(phoneNumber)
+
+        if (!fullName || !email || !phoneNumberData || !password || !role) {
             return res.status(400).json({
                 success: false,
                 messsage: "All fields are required..."
@@ -35,7 +40,7 @@ const register = async (req, res) => {
         await userModel.create({
             fullName,
             email,
-            phoneNumber,
+            phoneNumber: phoneNumberData,
             password: hashedPassword,
             role
 
