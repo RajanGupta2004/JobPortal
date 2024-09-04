@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import axios from 'axios'
 import { USER_END_POINTS } from '@/utils/Constant'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '@/redux/authSlice'
 
 
 const Login = () => {
@@ -18,11 +20,15 @@ const Login = () => {
         role: "",
     })
     const navigate = useNavigate()
-    console.log(inputs)
+    const dispatch = useDispatch()
+    const { loading } = useSelector((store) => store.auth)
+    console.log("loading", loading)
 
     const submitHandler = async (e) => {
         e.preventDefault()
         try {
+            // set loading true
+            dispatch(setLoading(true))
 
             const res = await axios.post(`${USER_END_POINTS}/login`, inputs, {
                 'Content-Type': 'application/json',
@@ -39,6 +45,8 @@ const Login = () => {
         } catch (error) {
             console.log(error)
             toast(error.response.data.message)
+        } finally {
+            dispatch(setLoading(false))
         }
     }
     return (
@@ -76,7 +84,11 @@ const Login = () => {
                         </RadioGroup>
 
                     </div>
-                    <Button className="w-full">Login</Button>
+                    {
+                        loading ? <h1>Loading...</h1> : (<Button className="w-full">Login</Button>)
+
+                    }
+
 
                     <p className='my-4 text-gray-500'>Don't have account ? <Link to="/sign-up" className='text-blue-500 underline'>sign-up</Link></p>
                 </form>
