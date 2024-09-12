@@ -1,13 +1,12 @@
 import React from 'react'
 import Navbar from './shared/Navbar'
+import HeroSection from './HeroSection'
 
 const Home = () => {
     return (
         <div>
             <Navbar />
-
-
-            <h1>Home page</h1>
+            <HeroSection />
 
         </div>
     )
