@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 
 const Job = () => {
     return (
-        <div className='border p-4 rounded shadow-lg w-[300px]'>
+        <div className='border p-4 rounded shadow-lg w-[300px]  bg-white'>
             <div className='flex items-center justify-between my-2'>
                 <p>Today</p>
                 <CiBookmark size={25} />
