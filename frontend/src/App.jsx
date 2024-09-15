@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Login from './components/auth/Login'
 import SignUp from './components/auth/SignUp'
 import { Toaster } from "@/components/ui/sonner"
+import Jobs from './components/Jobs'
 
 function App() {
 
@@ -22,7 +23,13 @@ function App() {
     {
       path: "sign-up",
       element: <SignUp />
+    },
+    {
+      path: "jobs",
+      element: <Jobs />
+
     }
+
   ])
 
   return (

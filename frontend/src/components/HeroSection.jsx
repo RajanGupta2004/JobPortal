@@ -3,7 +3,7 @@ import React from 'react'
 
 const HeroSection = () => {
     return (
-        <div className='text-center mt-20'>
+        <div className='text-center mt-14'>
             <div className='flex items-center flex-col gap-8'>
                 <h1 className='bg-gray-200 text-orange-700 px-4 py-2 text-xl font-semibold rounded-[1000px]'>No. 1 Job Hunt Website</h1>
                 <h1 className='text-4xl md:text-5xl font-bold'>Search, Apply & <br /> Get Your <span className='text-[#6A38C2]'>Dream Jobs </span></h1>
