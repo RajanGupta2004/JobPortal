@@ -7,6 +7,8 @@ import Login from './components/auth/Login'
 import SignUp from './components/auth/SignUp'
 import { Toaster } from "@/components/ui/sonner"
 import Jobs from './components/Jobs'
+import Browse from './components/Browse'
+import Profile from './components/Profile'
 
 function App() {
 
@@ -28,6 +30,15 @@ function App() {
       path: "jobs",
       element: <Jobs />
 
+    },
+    {
+      path: "browse",
+      element: <Browse />
+
+    },
+    {
+      path: "profile",
+      element: <Profile />
     }
 
   ])

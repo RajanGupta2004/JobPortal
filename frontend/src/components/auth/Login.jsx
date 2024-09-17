@@ -9,7 +9,7 @@ import { toast } from 'sonner'
 import axios from 'axios'
 import { USER_END_POINTS } from '@/utils/Constant'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '@/redux/authSlice'
+import { setLoading, setUser } from '@/redux/authSlice'
 
 
 const Login = () => {
@@ -35,8 +35,9 @@ const Login = () => {
                 // 'Authorization': 'Bearer your_token_here',
                 // 'Custom-Header': 'custom_value'
             })
-
+            console.log(res.data.user)
             if (res.data.success) {
+                dispatch(setUser(res.data.user))
                 toast(res.data.message)
                 navigate("/")
                 toast.success(res.data.message);

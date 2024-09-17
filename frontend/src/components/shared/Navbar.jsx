@@ -8,11 +8,13 @@ import {
 import { LogOut, UserRound } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 const Navbar = () => {
 
-    const user = false
+    const { user } = useSelector((store => store.auth))
+
     return (
         <div className='flex items-center justify-between mx-auto px-4 md:px-20  h-14 max-w-8xl'>
             <div>
@@ -22,9 +24,9 @@ const Navbar = () => {
             <div className='flex items-center gap-10'>
 
                 <ul className='flex items-center gap-4'>
-                    <li className='uppercase font-bold text-gray-900 cursor-pointer'>home</li>
-                    <li className='uppercase font-bold text-gray-900 cursor-pointer'>Job</li>
-                    <li className='uppercase font-bold text-gray-900 cursor-pointer'>Brows</li>
+                    <li className='uppercase font-bold text-gray-900 cursor-pointer'><Link to={"/"}>home</Link></li>
+                    <li className='uppercase font-bold text-gray-900 cursor-pointer'><Link to={"/jobs"}>Job</Link></li>
+                    <li className='uppercase font-bold text-gray-900 cursor-pointer'><Link to={"/browse"}>Browse</Link></li>
                 </ul>
 
                 {
@@ -49,7 +51,7 @@ const Navbar = () => {
                             <PopoverContent>
                                 <div className='flex items-center gap-3'>
                                     <UserRound />
-                                    <h3 className='cursor-pointer hover:underline'>Profile</h3>
+                                    <h3 className='cursor-pointer hover:underline'><Link to='/profile'>Profile</Link></h3>
                                 </div>
                                 <div className='flex items-center gap-3 mt-2'>
                                     <LogOut />
